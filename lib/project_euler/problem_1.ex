@@ -4,12 +4,12 @@ defmodule ProjectEuler.ProblemOne do
       Enum.reduce(0..999, 0, &reducer/2)
     end
 
-    defp reducer(number, acc) do
-      case { rem(number, 3), rem(number, 5) } do
-        { 0, _ } -> acc + number
-        { _, 0 } -> acc + number
-        _ -> acc
-      end
+    defp reducer(number, acc) when rem(number, 3) == 0 or rem(number, 5) == 0 do
+      acc + number
+    end
+
+    defp reducer(_, acc) do
+      acc
     end
 
   end
